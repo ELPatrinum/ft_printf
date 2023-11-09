@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_printf.c ft_put_u.c ft_putbase.c ft_putchar.c ft_putstr.c
+SRC = ft_printf.c ft_put_u.c ft_putbase.c ft_putchar.c ft_putstr.c ft_put_ad.c
 
 OBJ = $(SRC:.c=.o);
 

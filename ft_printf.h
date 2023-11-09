@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PTINTF_H
-# define FT_PTINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <unistd.h>
 # include <stdarg.h>
@@ -22,5 +22,7 @@ int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_put_u(unsigned int nb);
 int	ft_putbase(long long nb, char *base);
+int	ft_put_ad(void *ad);
+int	ft_putnbr(int nb);
 
 #endif

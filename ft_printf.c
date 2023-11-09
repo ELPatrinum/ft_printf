@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int helper(const char *format, va_list args)
+static int	helper(const char *format, va_list args)
 {
 	if (*format == 'c')
 		return (ft_putchar(va_arg(args, int)));
@@ -27,7 +27,7 @@ int helper(const char *format, va_list args)
 	else if (*format == 'X')
 		return (ft_putbase(va_arg(args, long long), "0123456789ABCDEF"));
 	else if (*format == 'p')
-		return (ft_putstr("0x"), ft_putbase(va_arg(args, long long), "0123456789abcdef"));
+		return (ft_put_ad(va_arg(args, void *)));
 	else if (*format == '%')
 		return (ft_putchar('%'));
 	return (0);
@@ -35,7 +35,7 @@ int helper(const char *format, va_list args)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
+	va_list	args;
 	int		counter;
 
 	counter = 0;

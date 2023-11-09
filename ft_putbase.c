@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-int	ft_strlen(char *s)
+static int	ft_strlen(char *s)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i])
 		i++;
@@ -24,15 +24,19 @@ int	ft_strlen(char *s)
 
 int	ft_putbase(long long nb, char *base)
 {
-	int	len;
-	int	i;
+	int			len;
+	int			i;
 
 	len = ft_strlen(base);
 	i = 0;
+	if (nb == (-9223372036854775807 - 1))
+	{
+		return(write(1, "-9223372036854775808", 19));
+	}
 	if (nb < 0)
 	{
 		nb = -nb;
-		i += write(1, "-",  1);
+		i += write(1, "-", 1);
 	}
 	if (nb >= len)
 	{
