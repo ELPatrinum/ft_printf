@@ -14,7 +14,7 @@ SRC = ft_printf.c ft_put_u.c ft_putbase.c ft_putchar.c ft_putstr.c ft_put_ad.c f
 
 OBJ = $(SRC:.c=.o);
 
-NAME = libftprintf.a
+NAME = ft_printf.a
 
 all: $(OBJ)
 	@ar -rcs $(NAME) $(OBJ)
