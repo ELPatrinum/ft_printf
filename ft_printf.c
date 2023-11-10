@@ -23,9 +23,11 @@ static int	helper(const char *format, va_list args)
 	else if (*format == 'u')
 		return (ft_put_u(va_arg(args, unsigned int)));
 	else if (*format == 'x')
-		return (ft_putbase(va_arg(args, long long), "0123456789abcdef"));
+		return (ft_put_hex(va_arg(args, int), 
+				"0123456789abcdef"));
 	else if (*format == 'X')
-		return (ft_putbase(va_arg(args, long long), "0123456789ABCDEF"));
+		return (ft_put_hex(va_arg(args, int), 
+				"0123456789ABCDEF"));
 	else if (*format == 'p')
 		return (ft_put_ad(va_arg(args, void *)));
 	else if (*format == '%')

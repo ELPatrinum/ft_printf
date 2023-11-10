@@ -23,6 +23,5 @@ int	ft_putstr(char *str);
 int	ft_put_u(unsigned int nb);
 int	ft_putbase(long long nb, char *base);
 int	ft_put_ad(void *ad);
-int	ft_putnbr(int nb);
-
+int	ft_put_hex(int nb, char *base);
 #endif

@@ -29,10 +29,6 @@ int	ft_putbase(long long nb, char *base)
 
 	len = ft_strlen(base);
 	i = 0;
-	if (nb == (-9223372036854775807 - 1))
-	{
-		return(write(1, "-9223372036854775808", 19));
-	}
 	if (nb < 0)
 	{
 		nb = -nb;
