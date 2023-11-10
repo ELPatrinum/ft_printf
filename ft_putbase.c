@@ -26,18 +26,34 @@ int	ft_putbase(long long nb, char *base)
 {
 	int			len;
 	int			i;
+	int			j;
 
+	j = 0;
 	len = ft_strlen(base);
 	i = 0;
 	if (nb < 0)
 	{
 		nb = -nb;
-		i += write(1, "-", 1);
+		j = write(1, "-", 1);
+		if (j == -1)
+			return (-1);
+		else
+			i += j;
 	}
+	j = 0;
 	if (nb >= len)
 	{
-		i += ft_putbase(nb / len, base);
+		j = ft_putbase(nb / len, base);
+		if (j == -1)
+			return (-1);
+		else
+			i += j;
 	}
-	i += ft_putchar(base[nb % len]);
+	j = 0;
+	j = ft_putchar(base[nb % len]);
+	if (j == -1)
+		return (-1);
+	else
+		i += j;
 	return (i);
 }

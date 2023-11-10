@@ -29,7 +29,7 @@ static int	helper(const char *format, va_list args)
 		return (ft_put_hex(va_arg(args, int), 
 				"0123456789ABCDEF"));
 	else if (*format == 'p')
-		return (ft_put_ad(va_arg(args, void *)));
+		return (ft_put_ad(va_arg(args, void *), "0123456789abcdef"));
 	else if (*format == '%')
 		return (ft_putchar('%'));
 	return (0);
@@ -39,18 +39,31 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		counter;
+	int		j;
 
 	counter = 0;
+	j = 0;
 	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
 		{
 			format++;
-			counter += helper(format, args);
+			j = helper(format, args);
+			if (j == -1)
+				return (-1);
+			else
+				counter += j;
 		}
 		else
-			counter += ft_putchar(*format);
+		{
+			j = 0;
+			j = ft_putchar(*format);
+			if (j == -1)
+				return (-1);
+			else
+				counter += j;
+		}
 		format++;
 	}
 	va_end(args);

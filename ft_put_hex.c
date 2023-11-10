@@ -6,7 +6,7 @@
 /*   By: muel-bak <muel-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:25:10 by muel-bak          #+#    #+#             */
-/*   Updated: 2023/11/10 12:46:43 by muel-bak         ###   ########.fr       */
+/*   Updated: 2023/11/10 17:31:46 by muel-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,28 @@ static int	ft_strlen(char *s)
 
 int	ft_put_hex(int nb, char *base)
 {
-	unsigned long long nbr;
-	int			len;
-	int			i;
+	unsigned long long	nbr;
+	int					len;
+	int					i;
+	int					j;
 
+	j = 0;
 	nbr = (unsigned int)nb;
 	len = ft_strlen(base);
 	i = 0;
 	if (nbr >= len)
 	{
-		i += ft_putbase(nbr / len, base);
+		j = ft_put_hex(nbr / len, base);
+		if (j == -1)
+			return (-1);
+		else
+			i += j;
 	}
-	i += ft_putchar(base[nbr % len]);
+	j = 0;
+	j = ft_putchar(base[nbr % len]);
+	if (j == -1)
+		return (-1);
+	else
+		i += j;
 	return (i);
 }
