@@ -6,7 +6,7 @@
 /*   By: muel-bak <muel-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 12:25:10 by muel-bak          #+#    #+#             */
-/*   Updated: 2023/11/10 17:31:46 by muel-bak         ###   ########.fr       */
+/*   Updated: 2023/11/10 21:56:57 by muel-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_strlen(char *s)
 int	ft_put_hex(int nb, char *base)
 {
 	unsigned long long	nbr;
-	int					len;
+	unsigned long long	len;
 	int					i;
 	int					j;
 

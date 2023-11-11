@@ -6,7 +6,7 @@
 /*   By: muel-bak <muel-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:04:19 by muel-bak          #+#    #+#             */
-/*   Updated: 2023/11/10 16:08:07 by muel-bak         ###   ########.fr       */
+/*   Updated: 2023/11/11 02:13:26 by muel-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_strlen(char *s)
 int	ft_put_ad(void *ad, char *base)
 {
 	unsigned long long	nb;
-	int					len;
+	unsigned long long	len;
 	int					i;
 	int					j;
 

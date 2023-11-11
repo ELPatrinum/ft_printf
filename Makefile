@@ -10,19 +10,33 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = ft_printf.c ft_put_u.c ft_putbase.c ft_putchar.c ft_putstr.c ft_put_ad.c ft_put_hex.c 
+NAME = libftprintf.a
 
-OBJ = $(SRC:.c=.o);
+CC = cc
 
-NAME = ft_printf.a
+CFLAGS = -Wall -Wextra -Werror
 
-all: $(OBJ)
-	@ar -rcs $(NAME) $(OBJ)
+AR = ar rc
+
+RM = rm -f
+
+FILES = ft_printf ft_put_u ft_putbase ft_putchar ft_putstr ft_put_ad ft_put_hex \
+
+OBJS = $(FILES:=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(AR) $@ $^
+
+%.o: %.c ft_printf.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJ)
+	$(RM) $(OBJS)
 
 fclean: clean
-	@rm -rf $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
+
