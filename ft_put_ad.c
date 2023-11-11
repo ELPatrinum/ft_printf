@@ -6,7 +6,7 @@
 /*   By: muel-bak <muel-bak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 19:04:19 by muel-bak          #+#    #+#             */
-/*   Updated: 2023/11/11 02:15:25 by muel-bak         ###   ########.fr       */
+/*   Updated: 2023/11/11 02:44:31 by muel-bak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,29 @@ static int	ft_strlen(char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+static int	little_helper(unsigned long long nb,
+					unsigned long long len, char *base, int i)
+{
+	int	j;
+
+	j = 0;
+	if (nb >= len)
+	{
+		j = ft_putbase(nb / len, base);
+		if (j == -1)
+			return (-1);
+		else
+			i += j;
+	}
+	j = 0;
+	j = ft_putchar(base[nb % len]);
+	if (j == -1)
+		return (-1);
+	else
+		i += j;
+	return (i - 2);
 }
 
 int	ft_put_ad(void *ad, char *base)
@@ -39,16 +62,7 @@ int	ft_put_ad(void *ad, char *base)
 	else
 		i += j;
 	j = 0;
-	if (nb >= len)
-	{
-		j = ft_putbase(nb / len, base);
-		if (j == -1)
-			return (-1);
-		else
-			i += j;
-	}
-	j = 0;
-	j = ft_putchar(base[nb % len]);
+	j = little_helper(nb, len, base, i);
 	if (j == -1)
 		return (-1);
 	else

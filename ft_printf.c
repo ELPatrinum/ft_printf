@@ -35,15 +35,9 @@ static int	helper(const char *format, va_list args)
 	return (0);
 }
 
-int	ft_printf(const char *format, ...)
+static int	helper_2(const char *format, va_list args, int counter, int j)
 {
-	va_list	args;
-	int		counter;
-	int		j;
-
-	counter = 0;
 	j = 0;
-	va_start(args, format);
 	while (*format)
 	{
 		if (*format == '%')
@@ -66,6 +60,23 @@ int	ft_printf(const char *format, ...)
 		}
 		format++;
 	}
+	return (counter);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list	args;
+	int		counter;
+	int		j;
+
+	counter = 0;
+	j = 0;
+	va_start(args, format);
+	j = helper_2(format, args, counter, j);
+	if (j == -1)
+		return (-1);
+	else
+		counter += j;
 	va_end(args);
 	return (counter);
 }

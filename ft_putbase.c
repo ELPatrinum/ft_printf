@@ -22,6 +22,35 @@ static int	ft_strlen(char *s)
 	return (i);
 }
 
+static int	little_helper(long long nb, int len, char *base, int i)
+{
+	int	j;
+
+	j = 0;
+	if (nb < 0)
+	{
+		nb = -nb;
+		if (write(1, "-", 1) < 0)
+			return (-1);
+		else
+			i += 1;
+	}
+	if (nb >= len)
+	{
+		j = ft_putbase(nb / len, base);
+		if (j < 0)
+			return (-1);
+		else
+			i += j;
+	}
+	j = ft_putchar(base[nb % len]);
+	if (j < 0)
+		return (-1);
+	else
+		i += j;
+	return (i);
+}
+
 int	ft_putbase(long long nb, char *base)
 {
 	int			len;
@@ -31,26 +60,7 @@ int	ft_putbase(long long nb, char *base)
 	j = 0;
 	len = ft_strlen(base);
 	i = 0;
-	if (nb < 0)
-	{
-		nb = -nb;
-		j = write(1, "-", 1);
-		if (j == -1)
-			return (-1);
-		else
-			i += j;
-	}
-	j = 0;
-	if (nb >= len)
-	{
-		j = ft_putbase(nb / len, base);
-		if (j == -1)
-			return (-1);
-		else
-			i += j;
-	}
-	j = 0;
-	j = ft_putchar(base[nb % len]);
+	j = little_helper(nb, len, base, i);
 	if (j == -1)
 		return (-1);
 	else
